@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout } from 'antd'
+import { Layout, Row, Col } from 'antd'
 
 import './Home.scss'
 import Card from './Blocks/Card'
@@ -32,14 +32,18 @@ const data = [
 
 export const Home = () => {
   return (
-    <Layout>
+    <Layout className='wrapper'>
       <Header>Header</Header>
-      <Layout className='wrapper'>
+      <Layout>
         <Sider>Sider</Sider>
         <Content>
-          {data.map((el) => (
-            <Card key={el.id} item={el} />
-          ))}
+          <Row>
+            {data.map((el) => (
+              <Col span='8'>
+                <Card key={el.id} item={el} />
+              </Col>
+            ))}
+          </Row>
         </Content>
       </Layout>
       <Footer>Footer</Footer>

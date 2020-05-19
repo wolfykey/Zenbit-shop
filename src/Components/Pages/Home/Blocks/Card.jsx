@@ -15,7 +15,7 @@ const Card = ({ item }) => {
     <ReactCardFlip isFlipped={isFlipped} flipDirection='vertical'>
       <AntdCard
         hoverable
-        style={{ width: 240 }}
+        style={{ width: '100%' }}
         cover={<img alt='example' src={item.image} />}
         onClick={onCardClick}
       >
@@ -24,7 +24,7 @@ const Card = ({ item }) => {
 
       <AntdCard
         hoverable
-        style={{ width: 240 }}
+        style={{ width: '100%' }}
         cover={<img alt='example' src={item.image} />}
         onClick={onCardClick}
       >
