@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS } from './types'
+import { FETCH_PRODUCTS, ADD_PRODUCT_TO_CART } from './types'
 
 export const fetchProducts = () => (dispatch) => {
   const response = [
@@ -29,4 +29,11 @@ export const fetchProducts = () => (dispatch) => {
     type: FETCH_PRODUCTS,
     payload: response
   })
+}
+
+export const productAddedToCart = (product) => {
+  return {
+    type: ADD_PRODUCT_TO_CART,
+    payload: product
+  }
 }

@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__cart,
+  &__logo {
+    color: #ffffff;
+  }
+
+  &__cart-count {
+    margin-left: 10px;
+  }
+}

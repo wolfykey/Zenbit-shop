@@ -25,7 +25,9 @@ function App() {
           </Switch>
         </Layout>
       </Content>
-      <Footer>Footer</Footer>
+      <Footer style={{ textAlign: 'center' }}>
+        Ant Design ©2020 Created by Vlad Vovk
+      </Footer>
     </Layout>
   )
 }
