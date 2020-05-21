@@ -1,41 +1,69 @@
-import { ADD_PRODUCT_TO_CART } from '../actions/types'
+import {
+  ADD_PRODUCT_TO_CART,
+  REMOVE_PRODUCT_FROM_CART,
+  REMOVE_ALL_PRODUCTS_FROM_CART
+} from '../actions/types'
 
-const initialState = [
-  {
-    id: 1,
-    quantity: 1,
-    name: 'шарик',
-    image:
-      'https://heroeswm-uvz.at.ua/imgs/katalog_statey/tumblr_m07iyfLy0F1qce1ag.jpg',
-    price: 20,
-    total: 20
-  }
-]
+const initialState = {
+  cartItems: [],
+  orderTotal: 0
+}
 
-const updateCartItems = (state, product) => {
-  const productInCart = state.find((el) => el.id === product.id)
-
-  if (productInCart) {
-    const productIdx = state.findIndex((el) => el.id === productInCart.id)
-    const productInState = state[productIdx]
-
-    const updateProduct = {
-      ...productInState,
-      quantity: ++productInState.quantity,
-      total: productInState.total * ++productInState.quantity
-    }
-
-    return [...state, updateProduct]
+const updateCartItems = (cartItems, item, idx) => {
+  if (item.count === 0) {
+    return [...cartItems.slice(0, idx), ...cartItems.slice(idx + 1)]
   }
 
-  return [...state, product]
+  if (idx === -1) {
+    return [...cartItems, item]
+  } else {
+    return [...cartItems.slice(0, idx), item, ...cartItems.slice(idx + 1)]
+  }
+}
+
+const updateCartItem = (product, item = {}, quantity) => {
+  const {
+    id = product.id,
+    name = product.name,
+    image = product.image,
+    price = product.price,
+    count = 0,
+    total = 0
+  } = item
+
+  return {
+    id,
+    name,
+    image,
+    price,
+    count: count + quantity,
+    total: total + quantity * product.price
+  }
+}
+
+const updateOrder = (state, product, quantity) => {
+  const { cartItems } = state
+
+  const itemIdx = cartItems.findIndex(({ id }) => id === product.id)
+  const item = cartItems[itemIdx]
+
+  const newItem = updateCartItem(product, item, quantity)
+
+  return {
+    ...state,
+    cartItems: updateCartItems(cartItems, newItem, itemIdx)
+  }
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_PRODUCT_TO_CART:
-      return updateCartItems(state, action.payload)
-
+      return updateOrder(state, action.payload, 1)
+    case REMOVE_PRODUCT_FROM_CART:
+      return updateOrder(state, action.payload, -1)
+    case REMOVE_ALL_PRODUCTS_FROM_CART:
+      const item = state.cartItems.find(({ id }) => id === action.payload.id)
+      return updateOrder(state, action.payload, -item.count)
     default:
       return state
   }

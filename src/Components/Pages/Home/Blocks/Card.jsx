@@ -1,11 +1,8 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Card as AntdCard, Button } from 'antd'
 import { ShoppingCartOutlined } from '@ant-design/icons'
 
 import './style.scss'
-
-import { productAddedToCart } from '../../../../redux/actions'
 
 const { Meta } = AntdCard
 
@@ -21,7 +18,7 @@ const Card = ({ item, productAddedToCart }) => {
         type='primary'
         icon={<ShoppingCartOutlined />}
         size='large'
-        onClick={() => productAddedToCart(item)}
+        onClick={() => productAddedToCart(item.id)}
       >
         Add to cart
       </Button>
@@ -29,8 +26,4 @@ const Card = ({ item, productAddedToCart }) => {
   )
 }
 
-const mapDispatchToProps = {
-  productAddedToCart
-}
-
-export default connect(null, mapDispatchToProps)(Card)
+export default Card
