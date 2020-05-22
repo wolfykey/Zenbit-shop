@@ -12,7 +12,7 @@ const Header = ({ cart }) => {
   return (
     <AntdHeader className='header'>
       <div className='header__logo'>BizTech shop</div>
-      <Menu theme='dark' mode='horizontal' defaultSelectedKeys={['1']}>
+      <Menu theme='dark' mode='horizontal'>
         <Menu.Item key='1'>
           <Link to='/'>Home</Link>
         </Menu.Item>

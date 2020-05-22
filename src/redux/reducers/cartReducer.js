@@ -5,8 +5,7 @@ import {
 } from '../actions/types'
 
 const initialState = {
-  cartItems: [],
-  orderTotal: 0
+  cartItems: []
 }
 
 const updateCartItems = (cartItems, item, idx) => {

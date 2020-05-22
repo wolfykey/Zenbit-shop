@@ -8,7 +8,9 @@ import {
   allProductsRemovedFromCart
 } from '../../../redux/actions'
 
-const Cart = ({ items, total, onIncrease, onDecrease, onDelete }) => {
+import './style.scss'
+
+const Cart = ({ items, onIncrease, onDecrease, onDelete }) => {
   const renderRow = (item, idx) => {
     const { id, name, count, total, price } = item
     return (
@@ -61,19 +63,15 @@ const Cart = ({ items, total, onIncrease, onDecrease, onDelete }) => {
             <th>Action</th>
           </tr>
         </thead>
-
         <tbody>{items.map(renderRow)}</tbody>
       </table>
-
-      <div className='total'>Total: ${total}</div>
     </div>
   )
 }
 
 const mapStateToProps = ({ cart }) => {
   return {
-    items: cart.cartItems,
-    total: cart.orderTotal
+    items: cart.cartItems
   }
 }
 
