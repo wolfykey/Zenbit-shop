@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
 import { Row, Col } from 'antd'
-import { productAddedToCart } from 'redux/actions'
 
 import './style.scss'
 
 import Card from './Blocks/Card'
-import { fetchProducts } from 'redux/actions/index'
 
 const Home = ({ products, fetchProducts, productAddedToCart }) => {
   useEffect(() => {
@@ -24,15 +21,4 @@ const Home = ({ products, fetchProducts, productAddedToCart }) => {
   )
 }
 
-const mapStateToProps = ({ products }) => {
-  return {
-    products
-  }
-}
-
-const mapDispatchToProps = {
-  fetchProducts,
-  productAddedToCart
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default Home

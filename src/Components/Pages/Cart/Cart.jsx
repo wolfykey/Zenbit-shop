@@ -1,12 +1,6 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Button, Tooltip } from 'antd'
 import { DeleteOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons'
-import {
-  productAddedToCart,
-  productRemovedFromCart,
-  allProductsRemovedFromCart
-} from 'redux/actions'
 
 import './style.scss'
 
@@ -69,16 +63,4 @@ const Cart = ({ items, onIncrease, onDecrease, onDelete }) => {
   )
 }
 
-const mapStateToProps = ({ cart }) => {
-  return {
-    items: cart.cartItems
-  }
-}
-
-const mapDispatchToProps = {
-  onIncrease: productAddedToCart,
-  onDecrease: productRemovedFromCart,
-  onDelete: allProductsRemovedFromCart
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+export default Cart
