@@ -6,7 +6,7 @@ import {
   productAddedToCart,
   productRemovedFromCart,
   allProductsRemovedFromCart
-} from '../../../redux/actions'
+} from 'redux/actions'
 
 import './style.scss'
 

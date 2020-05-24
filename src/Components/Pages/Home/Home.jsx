@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Row, Col } from 'antd'
-import { productAddedToCart } from '../../../redux/actions'
+import { productAddedToCart } from 'redux/actions'
 
 import './style.scss'
 
 import Card from './Blocks/Card'
-import { fetchProducts } from '../../../redux/actions/index'
+import { fetchProducts } from 'redux/actions/index'
 
 const Home = ({ products, fetchProducts, productAddedToCart }) => {
   useEffect(() => {
