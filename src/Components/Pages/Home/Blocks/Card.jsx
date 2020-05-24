@@ -8,11 +8,7 @@ const { Meta } = AntdCard
 
 const Card = ({ item, productAddedToCart }) => {
   return (
-    <AntdCard
-      hoverable
-      style={{ width: '100%' }}
-      cover={<img alt='example' src={item.image} />}
-    >
+    <AntdCard hoverable cover={<img alt='example' src={item.image} />}>
       <Meta title={item.name} description={item.price + ' ₴'} />
       <Button
         type='primary'
