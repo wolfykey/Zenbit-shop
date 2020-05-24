@@ -7,8 +7,10 @@ import Card from './Blocks/Card'
 
 const Home = ({ products, fetchProducts, productAddedToCart }) => {
   useEffect(() => {
-    fetchProducts()
-  }, [fetchProducts])
+    if (!products.length) {
+      fetchProducts()
+    }
+  }, [fetchProducts, products.length])
 
   return (
     <Row>
