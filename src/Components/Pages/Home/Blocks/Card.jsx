@@ -1,36 +1,24 @@
-import React, { useState } from 'react'
-import { Card as AntdCard } from 'antd'
-import ReactCardFlip from 'react-card-flip'
+import React from 'react'
+import { Card as AntdCard, Button } from 'antd'
+import { ShoppingCartOutlined } from '@ant-design/icons'
+
+import './style.scss'
 
 const { Meta } = AntdCard
 
-const Card = ({ item }) => {
-  const [isFlipped, setIsFlipped] = useState(false)
-
-  const onCardClick = () => {
-    setIsFlipped(!isFlipped)
-  }
-
+const Card = ({ item, productAddedToCart }) => {
   return (
-    <ReactCardFlip isFlipped={isFlipped} flipDirection='vertical'>
-      <AntdCard
-        hoverable
-        style={{ width: 240 }}
-        cover={<img alt='example' src={item.image} />}
-        onClick={onCardClick}
+    <AntdCard hoverable cover={<img alt='example' src={item.image} />}>
+      <Meta title={item.name} description={item.price + ' ₴'} />
+      <Button
+        type='primary'
+        icon={<ShoppingCartOutlined />}
+        size='large'
+        onClick={() => productAddedToCart(item.id)}
       >
-        <Meta title={item.name} />
-      </AntdCard>
-
-      <AntdCard
-        hoverable
-        style={{ width: 240 }}
-        cover={<img alt='example' src={item.image} />}
-        onClick={onCardClick}
-      >
-        <Meta title={item.price} />
-      </AntdCard>
-    </ReactCardFlip>
+        Add to cart
+      </Button>
+    </AntdCard>
   )
 }
 

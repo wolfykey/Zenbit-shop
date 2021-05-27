@@ -1,0 +1,17 @@
+.ant-layout {
+  &.main-layout {
+    min-height: 100vh;
+  }
+
+  &-content {
+    padding: 0 50px;
+  }
+
+  &-footer {
+    text-align: center;
+  }
+
+  .site-layout-background {
+    padding: 24px 0;
+  }
+}
